@@ -1,5 +1,11 @@
 -I/Users/jemrashbass/Dropbox/Jem&#039;s stuff/Development work/PlatformIO/Projects/winibago_leveller/include
 -I/Users/jemrashbass/Dropbox/Jem&#039;s stuff/Development work/PlatformIO/Projects/winibago_leveller/src
+-I/Users/jemrashbass/Dropbox/Jem&#039;s stuff/Development work/PlatformIO/Projects/winibago_leveller/.pio/libdeps/az-delivery-devkit-v4/Arduino_JSON/src
+-I/Users/jemrashbass/Dropbox/Jem&#039;s stuff/Development work/PlatformIO/Projects/winibago_leveller/.pio/libdeps/az-delivery-devkit-v4/ESPAsyncWebServer-esphome/src
+-I/Users/jemrashbass/Dropbox/Jem&#039;s stuff/Development work/PlatformIO/Projects/winibago_leveller/.pio/libdeps/az-delivery-devkit-v4/AsyncTCP-esphome/src
+-I/Users/jemrashbass/Dropbox/Jem&#039;s stuff/Development work/PlatformIO/Projects/winibago_leveller/.pio/libdeps/az-delivery-devkit-v4/Adafruit MPU6050
+-I/Users/jemrashbass/Dropbox/Jem&#039;s stuff/Development work/PlatformIO/Projects/winibago_leveller/.pio/libdeps/az-delivery-devkit-v4/Adafruit Unified Sensor
+-I/Users/jemrashbass/Dropbox/Jem&#039;s stuff/Development work/PlatformIO/Projects/winibago_leveller/.pio/libdeps/az-delivery-devkit-v4/Adafruit BusIO
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/esp_additions/freertos
@@ -188,7 +194,13 @@
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/dio_qspi/include
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/cores/esp32
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/variants/esp32
+-I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/FS/src
+-I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src
+-I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src
+-I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src
 -I/Users/jemrashbass/Dropbox/Jem&#039;s stuff/Development work/PlatformIO/Projects/winibago_leveller/lib/jem_lib
+-I/Users/jemrashbass/Dropbox/Jem&#039;s stuff/Development work/PlatformIO/Projects/winibago_leveller/.pio/libdeps/az-delivery-devkit-v4/Adafruit GFX Library
+-I/Users/jemrashbass/Dropbox/Jem&#039;s stuff/Development work/PlatformIO/Projects/winibago_leveller/.pio/libdeps/az-delivery-devkit-v4/Adafruit SSD1306
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/AsyncUDP/src
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src
@@ -199,7 +211,6 @@
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/ESPmDNS/src
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/Ethernet/src
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/FFat/src
--I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/FS/src
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/HTTPClient/src
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/HTTPUpdate/src
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/HTTPUpdateServer/src
@@ -210,17 +221,14 @@
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/RainMaker/src
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/SD/src
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/SD_MMC/src
--I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/SPIFFS/src
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/SimpleBLE/src
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/Ticker/src
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/USB/src
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/Update/src
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/WebServer/src
--I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src
 -I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/WiFiProv/src
--I/Users/jemrashbass/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src
 -I/Users/jemrashbass/.platformio/packages/toolchain-xtensa-esp32/xtensa-esp32-elf/include/c++/8.4.0
 -I/Users/jemrashbass/.platformio/packages/toolchain-xtensa-esp32/xtensa-esp32-elf/include/c++/8.4.0/xtensa-esp32-elf
 -I/Users/jemrashbass/.platformio/packages/toolchain-xtensa-esp32/lib/gcc/xtensa-esp32-elf/8.4.0/include
