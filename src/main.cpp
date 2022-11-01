@@ -8,6 +8,14 @@
 #include <Arduino_JSON.h>
 #include "SPIFFS.h"
 #include "Jem_credentials_HDI.h"
+// include functions for GPS
+#include <SoftwareSerial.h>
+#include <TinyGPS.h>
+//#include <WiFiClient.h>
+//#include <WebServer.h>
+#include "mainpage.h"
+#include "jscript.h"
+#include "style.h"
 
 // Replace with your network credentials
 //const char* ssid = "REPLACE_WITH_YOUR_SSID";
@@ -21,6 +29,17 @@ AsyncEventSource events("/events");
 
 // Json Variable to Hold Sensor Readings
 JSONVar readings;
+
+// GPS variables
+TinyGPS gps;
+SoftwareSerial ss;
+
+//For storing GPS data as string
+String text= "";
+char buff[10];
+//GPS data
+float flat, flon;
+unsigned long age;
 
 // Timer variables
 unsigned long lastTime = 0;
@@ -127,6 +146,14 @@ void setup() {
   initSPIFFS();
   initMPU();
 
+  // Initialize gps
+  ss.begin(9600, SWSERIAL_8N1, 13, 12, false);
+  if(!ss){
+    Serial.println("Invalid SoftwareSerial pin configuration, check config");
+    while (1) { // Don't continue with invalid configuration
+      delay (1000);
+    }
+
   // Handle Web Server
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send(SPIFFS, "/index.html", "text/html");
@@ -167,6 +194,31 @@ void setup() {
   });
   server.addHandler(&events);
 
+  //Page for reading GPS data. Sensor is read in this part
+  server.on("/loc", [](){
+    gps.f_get_position(&flat, &flon, &age);
+    text = floatToString(flat,TinyGPS::GPS_INVALID_F_ANGLE, 10, 6) + ',';
+    text += floatToString(flon,TinyGPS::GPS_INVALID_F_ANGLE, 11, 6);
+    if(text.indexOf("v") > 0){
+      text = "7.207573, 125.395874";
+    }
+    Serial.println(text);
+    server.send(200, "text/plain", text);
+    smartdelay(500);
+  });
+  //Home page. Contents of 'page' is in mainpage.h
+  server.on("/", []() {
+   server.send(200, "text/html", page);
+  });
+  //JavaScript! Contents of 'javascript' is in jscript.h
+  server.on("/jscript.js", []() {
+   server.send(200, "text/javascript", javascript);
+  });
+  //CSS! Contents of 'style' is in style.h
+  server.on("/style.css", []() {
+   server.send(200, "text/css", style);
+  });
+
   server.begin();
 }
 
@@ -185,5 +237,32 @@ void loop() {
     // Send Events to the Web Server with the Sensor Readings
     events.send(getTemperature().c_str(),"temperature_reading",millis());
     lastTimeTemperature = millis();
+  }
+
+  // Function for converting gps float values to string
+  String floatToString(float val, float invalid, int len, int prec) {
+    String out = "";
+    if (val == invalid) {
+      while (len-- > 1){
+        return "inv" ;
+      }
+    }
+    else{
+      for (int i = 0; i < 10; i++) {
+         dtostrf(val, len, prec, buff);
+         out += buff;
+         return out;
+      }
+    }
+  }
+
+  static void smartdelay(unsigned long ms)
+  {
+    unsigned long start = millis();
+    do
+    {
+      while (ss.available())
+        gps.encode(ss.read());
+    } while (millis() - start < ms);
   }
 }
